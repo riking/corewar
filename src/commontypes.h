@@ -10,8 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef COMMON_H
-# define COMMON_H
+#ifndef COMMONTYPES_H
+# define COMMONTYPES_H
 
 # include <stdint.h>
 
@@ -26,4 +26,4 @@ typedef int64_t			t_s64;
 
 
 
-#endif  // COMMON_H
+#endif  // COMMONTYPES_H

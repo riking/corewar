@@ -14,12 +14,15 @@ NAME 		= corewar
 
 COMMONSRC	+= op.c
 
-ASM_SRC		+= main.c
+ASM_SRC		+= asm/main.c
 
-VM_SRC		+= main.c
+VM_SRC		+= vm/main.c
+
+DISASM_SRC  += disasm/main.c
 
 ASM_OBJS	= $(addprefix build/, $(COMMONSRC:.c=.o) $(ASM_SRC:.c=.o))
 VM_OBJS		= $(addprefix build/, $(COMMONSRC:.c=.o) $(VM_SRC:.c=.o))
+DISASM_OBJS = $(addprefix build/, $(COMMONSRC:.c=.o) $(DISASM_SRC:.c=.o))
 LIBS		= libft/libft.a
 
 # Flags start
@@ -45,9 +48,15 @@ endif
 
 .PHONY: all clean fclean re
 
-all: corewar asm
+all: corewar asm disasm
 
 corewar: $(VM_OBJS) $(LIBS)
+	$(CC) $(LDFLAGS) -o $@ $^
+
+asm: $(ASM_OBJS) $(LIBS)
+	$(CC) $(LDFLAGS) -o $@ $^
+
+disasm: $(DISASM_OBJS) $(LIBS)
 	$(CC) $(LDFLAGS) -o $@ $^
 
 libft/libft.a: libft
