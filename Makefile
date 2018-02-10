@@ -18,7 +18,7 @@ ASM_SRC		+= asm/main.c
 
 VM_SRC		+= vm/main.c
 
-DISASM_SRC  += disasm/main.c
+DISASM_SRC  += disasm/main.c disasm/file_op.c disasm/instruction.c disasm/print.c disasm/stdin.c disasm/util.c
 
 ASM_OBJS	= $(addprefix build/, $(COMMONSRC:.c=.o) $(ASM_SRC:.c=.o))
 VM_OBJS		= $(addprefix build/, $(COMMONSRC:.c=.o) $(VM_SRC:.c=.o))
