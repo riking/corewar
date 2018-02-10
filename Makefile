@@ -6,17 +6,17 @@
 #    By: kyork <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/01/19 13:14:58 by kyork             #+#    #+#              #
-#    Updated: 2018/02/10 13:43:44 by kyork            ###   ########.fr        #
+#    Updated: 2018/02/10 14:20:10 by kyork            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME 		= corewar
 
-COMMONSRC	+= op.c
+COMMONSRC	+= op.c instr.c
 
 ASM_SRC		+= asm/main.c
 
-VM_SRC		+= vm/main.c
+VM_SRC		+= vm/heap.c vm/cycle.c
 
 DISASM_SRC  += disasm/main.c disasm/file_op.c disasm/instruction.c disasm/print.c disasm/stdin.c disasm/util.c
 

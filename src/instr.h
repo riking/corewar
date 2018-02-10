@@ -6,22 +6,25 @@
 /*   By: kyork <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/10 11:16:12 by kyork             #+#    #+#             */
-/*   Updated: 2018/02/10 13:59:56 by kyork            ###   ########.fr       */
+/*   Updated: 2018/02/10 14:19:40 by kyork            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "op.h"
-#include "commontypes.h"
+#ifndef INSTR_H
+# define INSTR_H
+
+# include "op.h"
+# include "commontypes.h"
 
 typedef struct	s_op
 {
-	char		*instruction;
+	char		*name;
 	int			arg_count;
 	t_arg_type	arg[MAX_ARGS_NUMBER];
-	char		opcode;
-	int			cycles;
+	t_u8		opcode;
+	size_t		cycles;
 	char		*description;
-	int			arg_descript;
+	int			needs_acb;
 	int			short_direct;
 }				t_op;
 
@@ -48,3 +51,5 @@ size_t		get_delay(t_u8 *pc);
 ** [14] [ACB] [0 0 0 0] [0 0 0 0] [1]
 ** 1 + 1 + 8 + 1 = 11 bytes
 */
+
+#endif

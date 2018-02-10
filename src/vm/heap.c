@@ -6,7 +6,7 @@
 /*   By: kyork <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/10 10:48:57 by kyork             #+#    #+#             */
-/*   Updated: 2018/02/10 13:23:25 by kyork            ###   ########.fr       */
+/*   Updated: 2018/02/10 14:09:23 by kyork            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ void		vm_set_delay(t_vm *vm, t_proc *proc, int cycles)
 
 	ary = (t_proc**)vm->procs.ptr;
 	idx = (proc - ary[0]);
-	if (idx < 0 || idx > vm->procs.item_count)
+	if (idx < 0 || idx > (ssize_t)vm->procs.item_count)
 	{
 		ft_dprintf(2, "Error: proc pointer %p is not member of proc array %p"
 				" (len %zd)", proc, ary, vm->procs.item_count);

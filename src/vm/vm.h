@@ -6,7 +6,7 @@
 /*   By: kyork <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/27 16:58:16 by kyork             #+#    #+#             */
-/*   Updated: 2018/02/10 13:43:01 by kyork            ###   ########.fr       */
+/*   Updated: 2018/02/10 14:10:36 by kyork            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define VM_VM_H
 
 # include "../commontypes.h"
+# include "../instr.h"
 # include <libft.h>
 
 # include <stdint.h>
@@ -90,7 +91,7 @@ void					vm_fix_up(t_vm *vm, size_t idx);
 */
 size_t					vm_next_cycle(t_vm *vm);
 
-bool					vm_do_cycle(t_vm *vm);
+void					vm_do_cycle(t_vm *vm);
 
 void					proc_exec(t_vm *vm, t_proc *proc);
 

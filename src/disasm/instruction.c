@@ -6,7 +6,7 @@
 /*   By: asarandi <asarandi@student.42.us.org>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/03 03:27:55 by asarandi          #+#    #+#             */
-/*   Updated: 2018/02/03 03:32:04 by asarandi         ###   ########.fr       */
+/*   Updated: 2018/02/10 14:21:14 by kyork            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,10 +42,10 @@ int	complex_instruction(char *data, t_op op)
 
 int	print_instruction(char *data, t_op op)
 {
-	ft_printf("\t%s\t", op.instruction);
-	if (op.arg_descript == 1)
+	ft_printf("\t%s\t", op.name);
+	if (op.needs_acb)
 		return (complex_instruction(data, op));
-	if (op.short_direct == 1)
+	if (op.short_direct)
 	{
 		ft_printf("%c%d\n", DIRECT_CHAR, chartoshort(&data[1]));
 		return (3);
