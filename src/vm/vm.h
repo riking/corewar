@@ -6,19 +6,22 @@
 /*   By: kyork <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/27 16:58:16 by kyork             #+#    #+#             */
-/*   Updated: 2017/06/27 17:39:43 by kyork            ###   ########.fr       */
+/*   Updated: 2018/02/10 11:32:00 by kyork            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef VM_VM_H
 # define VM_VM_H
 
-# include <stdint.h>
+# include "../commontypes.h"
+# include <libft.h>
 
+# include <stdint.h>
+# include <stdbool.h>
+# include <stdlib.h>
 
 typedef struct			s_player {
-
-	t_array procs; // t_proc*
+	t_s32	plnum;
 }						t_player;
 
 /*
@@ -44,10 +47,44 @@ typedef struct			s_proc {
 }						t_proc;
 
 /*
+** procs: min-heap of t_array<t_proc>
+*/
+typedef struct			s_vm {
+	t_array	procs;
+	size_t	cur_cycle;
+
+	t_u8	redzone_1[16];
+	t_u8	memory[MEM_SIZE];
+	t_u8	redzone_2[16];
+}						t_vm;
+
+/*
+** Set the proc delay for the provided proc, and fix the queue.
+** Aborts with a diagnostic if proc is not a member of vm.procs
+*/
+void					vm_set_delay(t_vm *vm, t_proc *proc, int cycles);
+/*
+** Create a new proc from the given parent and schedule it.
+*/
+void					vm_fork_proc(t_vm *vm, t_proc *parent,
+							int cycles, int pc_offset);
+/*
+** Heap percolate functions
+*/
+bool					vm_fix_down(t_vm *vm, size_t idx);
+void					vm_fix_up(t_vm *vm, size_t idx);
+
+/*
 ** Find and return the lowest wakeup_at of all live procs.
 ** @param procs
 ** @return
 */
-size_t					next_cycle_num(t_array procs);
+size_t					vm_next_cycle(t_vm *vm);
+
+/*
+** Returns true if the redzones have been written to (indicates a boundary
+** bug).
+*/
+bool					vm_check_redzone(t_vm *vm);
 
 #endif
