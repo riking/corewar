@@ -6,11 +6,13 @@
 /*   By: asarandi <asarandi@student.42.us.org>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/28 20:56:43 by asarandi          #+#    #+#             */
-/*   Updated: 2018/02/01 04:48:20 by asarandi         ###   ########.fr       */
+/*   Updated: 2018/02/10 14:07:39 by kyork            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "disasm.h"
+
+#include <stdlib.h>
 
 void	stdin_quit(char *membuf)
 {

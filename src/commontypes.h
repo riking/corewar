@@ -6,7 +6,7 @@
 /*   By: kyork <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/01 18:42:55 by kyork             #+#    #+#             */
-/*   Updated: 2018/02/01 18:42:57 by kyork            ###   ########.fr       */
+/*   Updated: 2018/02/10 14:00:22 by kyork            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define COMMONTYPES_H
 
 # include <stdint.h>
+# include <stddef.h>
 
 typedef uint8_t			t_u8;
 typedef uint16_t		t_u16;

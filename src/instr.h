@@ -6,12 +6,12 @@
 /*   By: kyork <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/10 11:16:12 by kyork             #+#    #+#             */
-/*   Updated: 2018/02/10 13:55:51 by kyork            ###   ########.fr       */
+/*   Updated: 2018/02/10 13:59:56 by kyork            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <op.h>
-#include "common_types.h"
+#include "op.h"
+#include "commontypes.h"
 
 typedef struct	s_op
 {

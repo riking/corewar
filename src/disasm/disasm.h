@@ -6,17 +6,19 @@
 /*   By: asarandi <asarandi@student.42.us.org>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/01 04:40:47 by asarandi          #+#    #+#             */
-/*   Updated: 2018/02/10 13:56:23 by kyork            ###   ########.fr       */
+/*   Updated: 2018/02/10 14:05:15 by kyork            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef DISASM_H
 # define DISASM_H
 
-# include "libft.h"
-# include "libftprintf.h"
 # include "../instr.h"
-# include "op.h"
+# include "../op.h"
+
+# include <libft.h>
+# include <ft_printf.h>
+
 # include <unistd.h>
 # include <errno.h>
 # include <fcntl.h>
@@ -37,7 +39,7 @@ int				print_int_direct(char *data, int index);
 int				print_prog_info(t_header *header);
 int				print_register(char *data, int index);
 int				print_short_direct(char *data, int index);
-int				show_usage();
+int				show_usage(void);
 int				main(int ac, char **av);
 short			chartoshort(char *array);
 ssize_t			getfilesize(char *filename);

@@ -6,11 +6,13 @@
 /*   By: asarandi <asarandi@student.42.us.org>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/28 17:29:57 by asarandi          #+#    #+#             */
-/*   Updated: 2018/02/01 04:43:57 by asarandi         ###   ########.fr       */
+/*   Updated: 2018/02/10 14:07:25 by kyork            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "disasm.h"
+
+#include <stdlib.h>
 
 void	quit(int errnum, void *memory)
 {

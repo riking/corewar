@@ -6,26 +6,28 @@
 /*   By: asarandi <asarandi@student.42.us.org>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/01 04:11:28 by asarandi          #+#    #+#             */
-/*   Updated: 2018/02/03 04:05:41 by asarandi         ###   ########.fr       */
+/*   Updated: 2018/02/10 14:06:29 by kyork            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "disasm.h"
 
-int		show_usage(void)
+#include <stdlib.h>
+
+int				show_usage(void)
 {
 	ft_printf("usage: ./diasam <file.cor>\n");
 	return (0);
 }
 
-int		bad_input(char *message, char *mem)
+int				bad_input(char *message, char *mem)
 {
 	free(mem);
-	ft_printf(message);
+	ft_printf("%s", message);
 	return (0);
 }
 
-void	routine(char *data, int size)
+void			routine(char *data, int size)
 {
 	int	i;
 	int	j;
@@ -46,13 +48,13 @@ void	routine(char *data, int size)
 		if ((size_t)j >= (sizeof(g_op_tab) / sizeof(t_op)) - 1)
 		{
 			ft_printf("error: unknown mnemonic %#hhx ", data[i]);
-			ft_printf("at file offset %#x\n", i + sizeof(t_header));
+			ft_printf("at file offset %#zx\n", (size_t)i + sizeof(t_header));
 			break ;
 		}
 	}
 }
 
-int		main(int ac, char **av)
+int				main(int ac, char **av)
 {
 	size_t		filesize;
 	char		*data;
