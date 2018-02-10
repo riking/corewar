@@ -6,7 +6,7 @@
 /*   By: kyork <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/10 10:48:57 by kyork             #+#    #+#             */
-/*   Updated: 2018/02/10 11:33:19 by kyork            ###   ########.fr       */
+/*   Updated: 2018/02/10 13:23:25 by kyork            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,11 @@ static bool	proc_sooner(t_vm *vm, size_t idx1, size_t idx2)
 
 	p1 = (t_proc*)ft_ary_get(&vm->procs, idx1);
 	p2 = (t_proc*)ft_ary_get(&vm->procs, idx2);
-	return (p1->wakeup_at) < (p2->wakeup_at);
+	if (p1->wakeup_at < p2->wakeup_at)
+		return true;
+	if (p1->wakeup_at > p2->wakeup_at)
+		return false;
+	return p1->proc_id < p2->proc_id;
 }
 
 bool		vm_fix_down(t_vm *vm, size_t idx0)
