@@ -6,7 +6,7 @@
 /*   By: kyork <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/12 13:10:47 by kyork             #+#    #+#             */
-/*   Updated: 2018/02/12 15:03:21 by kyork            ###   ########.fr       */
+/*   Updated: 2018/02/12 15:22:01 by kyork            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ static size_t	decode_sdirect(t_vm *vm, t_proc *proc, t_insndec *state)
 	t_s16	short_v;
 	t_u32	full_v;
 
+	(void)vm;
 	if (state->opd->short_direct)
 	{
 		ft_memcpy(&short_v, proc->instr + state->by_offset, sizeof(t_s16));
@@ -40,6 +41,7 @@ static void		decode_reg(t_vm *vm, t_proc *proc, t_insndec *state)
 {
 	t_u8	regn;
 
+	(void)vm;
 	regn = proc->instr[state->by_offset];
 	state->by_offset++;
 	if (regn == 0 || regn > REG_NUMBER)
@@ -53,6 +55,7 @@ static void		decode_ind(t_vm *vm, t_proc *proc, t_insndec *state)
 	t_s16	pcoff;
 	t_u32	full_v;
 
+	(void)vm;
 	ft_memcpy(&pcoff, proc->instr + state->by_offset, IND_SIZE);
 	full_v = (t_s32)pcoff;
 	state->by_offset += 2;
