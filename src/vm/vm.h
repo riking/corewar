@@ -6,7 +6,7 @@
 /*   By: kyork <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/27 16:58:16 by kyork             #+#    #+#             */
-/*   Updated: 2018/02/12 15:03:19 by kyork            ###   ########.fr       */
+/*   Updated: 2018/02/12 15:11:21 by kyork            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,6 +102,14 @@ void					proc_exec(t_vm *vm, t_proc *proc);
 ** bug).
 */
 bool					vm_check_redzone(t_vm *vm);
+
+/*
+** mem_fix applies circular address space restrictions.
+** mem_index applies IDX_MOD restrictions as well as the circular address
+** space.
+*/
+size_t					mem_fix(ssize_t ptr);
+size_t					mem_index(size_t base, ssize_t offset);
 
 void					guest_read(t_u8 *buf, size_t ptr, size_t len);
 void					guest_write(t_u8 *buf, size_t ptr, size_t len);
