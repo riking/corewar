@@ -6,7 +6,7 @@
 /*   By: kyork <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/27 16:58:16 by kyork             #+#    #+#             */
-/*   Updated: 2018/02/10 14:10:36 by kyork            ###   ########.fr       */
+/*   Updated: 2018/02/12 15:03:19 by kyork            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,17 +38,19 @@ typedef struct			s_player {
 ** plnum: player number that spawned this proc, rich debugging
 */
 typedef struct			s_proc {
-	t_array	regs;
+	t_u32	regs[REG_NUMBER];
 	size_t	pc;
 	size_t	live_count;
 	size_t	wakeup_at;
 
 	t_u8	instr[MAX_INSTR_BYTES];
+	bool	carry;
+	t_u32	decoded_arg[3];
 
 	size_t	proc_id;
 	size_t	last_live;
 	t_s32	plnum;
-	bool	carry;
+	bool	last_instr_err;
 }						t_proc;
 
 /*
@@ -103,5 +105,12 @@ bool					vm_check_redzone(t_vm *vm);
 
 void					guest_read(t_u8 *buf, size_t ptr, size_t len);
 void					guest_write(t_u8 *buf, size_t ptr, size_t len);
+
+void					reg_write(t_vm *vm, t_proc *proc, int reg, t_u32 value);
+
+/*
+** Returns the number of bytes the instruction occupies
+*/
+size_t					decode_args(t_vm *vm, t_proc *proc);
 
 #endif
