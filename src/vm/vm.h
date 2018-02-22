@@ -6,7 +6,7 @@
 /*   By: kyork <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/27 16:58:16 by kyork             #+#    #+#             */
-/*   Updated: 2018/02/21 21:35:19 by jkrause          ###   ########.fr       */
+/*   Updated: 2018/02/21 22:15:27 by jkrause          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,8 +50,8 @@ typedef union			u_champion_file
 
 typedef struct			s_champion
 {
-	t_champion_file	*file;
-	t_u64	file_size;
+	t_champion_file		*file;
+	t_u64				file_size;
 }						t_champion;
 
 /*
