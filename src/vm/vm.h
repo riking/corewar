@@ -6,7 +6,7 @@
 /*   By: kyork <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/27 16:58:16 by kyork             #+#    #+#             */
-/*   Updated: 2018/02/12 15:11:21 by kyork            ###   ########.fr       */
+/*   Updated: 2018/02/21 21:35:19 by jkrause          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,17 +15,44 @@
 
 # include "../commontypes.h"
 # include "../instr.h"
+# include "../op.h"
 # include <libft.h>
 
 # include <stdint.h>
 # include <stdbool.h>
 # include <stdlib.h>
 
+# include <unistd.h>
+# include <fcntl.h>
+
 # define MAX_INSTR_BYTES 11
 
-typedef struct			s_player {
-	t_s32	plnum;
-}						t_player;
+/*
+** Champions
+*/
+
+# define MAX_CHAMPION_FILE_SIZE (CHAMP_MAX_SIZE+sizeof(t_header))
+
+/*
+** I thought I mention: The structs I created kind of suck.
+** The union is cool though.
+*/
+
+typedef union			u_champion_file
+{
+	t_header			header;
+	struct
+	{
+		t_header		header;
+		char			instructions[CHAMP_MAX_SIZE];
+	}					full;
+}						t_champion_file;
+
+typedef struct			s_champion
+{
+	t_champion_file	*file;
+	t_u64	file_size;
+}						t_champion;
 
 /*
 ** regs: element size REG_SIZE, count REG_NUMBER
@@ -120,5 +147,14 @@ void					reg_write(t_vm *vm, t_proc *proc, int reg, t_u32 value);
 ** Returns the number of bytes the instruction occupies
 */
 size_t					decode_args(t_vm *vm, t_proc *proc);
+
+/*
+** Various champion loading/reading functions.
+*/
+
+t_champion				*read_champion(char *filename);
+int						load_champs(void);
+
+void					print_champion(t_champion *champion);
 
 #endif

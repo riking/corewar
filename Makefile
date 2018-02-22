@@ -16,7 +16,8 @@ COMMONSRC	+= op.c instr.c string.c
 
 ASM_SRC		+= asm/main.c
 
-VM_SRC		+= vm/heap.c vm/cycle.c vm/op_math.c vm/instr.c
+#VM_SRC	+= vm/heap.c vm/cycle.c vm/op_math.c vm/instr.c vm/champions.c
+VM_SRC		+= vm/champions.c vm/main.c
 
 DISASM_SRC  += disasm/main.c disasm/file_op.c disasm/instruction.c disasm/print.c disasm/stdin.c disasm/util.c
 
