@@ -6,7 +6,7 @@
 /*   By: kyork <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/10 11:16:12 by kyork             #+#    #+#             */
-/*   Updated: 2018/02/10 14:19:40 by kyork            ###   ########.fr       */
+/*   Updated: 2018/02/20 13:35:40 by jkrause          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,12 @@
 
 # include "op.h"
 # include "commontypes.h"
+
+# if __BYTE_ORDER__ == __ORDER_LITTLE_ENDIAN__
+#  define HTON32(x) __builtin_bswap32(x)
+# else
+#  define HTON32(x) (x)
+# endif
 
 typedef struct	s_op
 {
