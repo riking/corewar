@@ -6,7 +6,7 @@
 /*   By: kyork <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/27 16:58:16 by kyork             #+#    #+#             */
-/*   Updated: 2018/02/21 22:15:27 by jkrause          ###   ########.fr       */
+/*   Updated: 2018/02/21 22:46:32 by jkrause          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,24 +33,13 @@
 
 # define MAX_CHAMPION_FILE_SIZE (CHAMP_MAX_SIZE+sizeof(t_header))
 
-/*
-** I thought I mention: The structs I created kind of suck.
-** The union is cool though.
-*/
-
-typedef union			u_champion_file
+typedef struct			s_champion
 {
-	t_header			header;
-	struct
+	struct				s_champion_file
 	{
 		t_header		header;
 		char			instructions[CHAMP_MAX_SIZE];
-	}					full;
-}						t_champion_file;
-
-typedef struct			s_champion
-{
-	t_champion_file		*file;
+	}					*file;
 	t_u64				file_size;
 }						t_champion;
 

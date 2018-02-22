@@ -6,7 +6,7 @@
 /*   By: kyork <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/01 18:31:34 by kyork             #+#    #+#             */
-/*   Updated: 2018/02/21 22:22:33 by jkrause          ###   ########.fr       */
+/*   Updated: 2018/02/21 22:45:44 by jkrause          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ void			print_champion(t_champion *champion)
 			champion->file->header.comment);
 	ft_printf("Program size: %d\n", HTON32(champion->file->header.prog_size));
 	ft_printf("First operation in binary: ");
-	op = g_op_tab[(int)champion->file->full.instructions[0] - 1];
+	op = g_op_tab[(int)champion->file->instructions[0] - 1];
 	ft_printf("%s - %s - %#x(%d)\n", op.name, op.description,
 			op.opcode, op.opcode);
 }

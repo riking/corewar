@@ -6,7 +6,7 @@
 /*   By: jkrause <jkrause@student.42.us.org>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/10 14:36:45 by jkrause           #+#    #+#             */
-/*   Updated: 2018/02/21 22:21:54 by jkrause          ###   ########.fr       */
+/*   Updated: 2018/02/21 22:49:49 by jkrause          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 t_champion			*read_champion(char *filename)
 {
 	int				fd;
-	t_u64			size_read;
+	t_s64			size_read;
 	t_string		*str;
 	t_champion		*champion;
 
@@ -29,14 +29,15 @@ t_champion			*read_champion(char *filename)
 		return (0);
 	}
 	if ((size_read = read(fd, str->buffer, MAX_CHAMPION_FILE_SIZE))
-			< sizeof(t_header)
+			< (t_s64)sizeof(t_header)
 		|| read(fd, str->buffer, MAX_CHAMPION_FILE_SIZE) > 0)
 	{
-		ft_dprintf(2, "Champion \"%s\" has an invalid file size\n", filename);
+		ft_dprintf(2, "Champion \"%s\" is an invalid file (or is too big).\n",
+				filename);
 		return (0);
 	}
 	champion = (t_champion*)ft_memalloc(sizeof(t_champion));
-	champion->file = (t_champion_file*)(void*)str->buffer;
+	champion->file = (struct s_champion_file*)(void*)str->buffer;
 	champion->file_size = size_read;
 	string_destroy(str, 0);
 	return (champion);
