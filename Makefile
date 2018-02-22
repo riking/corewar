@@ -6,13 +6,13 @@
 #    By: kyork <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/01/19 13:14:58 by kyork             #+#    #+#              #
-#    Updated: 2018/02/12 15:05:07 by kyork            ###   ########.fr        #
+#    Updated: 2018/02/21 21:44:22 by jkrause          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME 		= corewar
 
-COMMONSRC	+= op.c instr.c
+COMMONSRC	+= op.c instr.c string.c
 
 ASM_SRC		+= asm/main.c
 

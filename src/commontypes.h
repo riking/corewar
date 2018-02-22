@@ -6,7 +6,7 @@
 /*   By: kyork <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/01 18:42:55 by kyork             #+#    #+#             */
-/*   Updated: 2018/02/10 14:00:22 by kyork            ###   ########.fr       */
+/*   Updated: 2018/02/21 21:36:18 by jkrause          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,22 @@ typedef int16_t			t_s16;
 typedef int32_t			t_s32;
 typedef int64_t			t_s64;
 
+/*
+** Rudimentary length-tagged string library
+** Mostly untested.
+*/
 
+typedef struct			s_string
+{
+	char	*buffer;
+	t_u64	length;
+}						t_string;
+
+t_string				*string_create(t_u64 length);
+t_string				*string_wrap(char *buffer, t_u64 length);
+void					string_append(t_string *src, t_string *append);
+void					string_lcat(t_string *dst, t_u64 start,
+							t_string *src, t_u64 length);
+void					string_destroy(t_string *string, int free_buffer);
 
 #endif  // COMMONTYPES_H
