@@ -6,7 +6,7 @@
 /*   By: kyork <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/10 14:10:57 by kyork             #+#    #+#             */
-/*   Updated: 2018/02/26 15:43:33 by kyork            ###   ########.fr       */
+/*   Updated: 2018/02/26 15:47:30 by kyork            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,6 @@
 typedef void		(*t_op_func)(t_vm *vm, t_proc *proc);
 
 t_op_func			get_op_func(t_u8 opcode);
-
-typedef struct		s_insndec {
-	t_op	*opd;
-	int		by_offset;
-	int		argn;
-}					t_insndec;
 
 void				op_live(t_vm *vm, t_proc *proc);
 void				op_ld(t_vm *vm, t_proc *proc);
