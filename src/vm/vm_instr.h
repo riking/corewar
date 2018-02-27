@@ -6,12 +6,14 @@
 /*   By: kyork <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/10 14:10:57 by kyork             #+#    #+#             */
-/*   Updated: 2018/02/26 15:47:30 by kyork            ###   ########.fr       */
+/*   Updated: 2018/02/27 09:59:59 by kyork            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef VM_VM_INSTR_H
 # define VM_VM_INSTR_H
+
+# include "vm.h"
 
 typedef void		(*t_op_func)(t_vm *vm, t_proc *proc);
 

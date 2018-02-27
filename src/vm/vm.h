@@ -6,7 +6,7 @@
 /*   By: kyork <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/27 16:58:16 by kyork             #+#    #+#             */
-/*   Updated: 2018/02/26 15:55:15 by kyork            ###   ########.fr       */
+/*   Updated: 2018/02/27 09:56:43 by kyork            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,13 +112,14 @@ bool					vm_check_redzone(t_vm *vm);
 ** space.
 */
 size_t					mem_fix(ssize_t ptr);
-size_t					mem_index(size_t base, ssize_t offset);
+size_t					mem_index(size_t base, t_s32 offset);
 
 void					guest_read(t_vm *vm, t_u8 *buf,
 							size_t ptr, size_t len);
 void					guest_write(t_vm *vm, t_u8 *buf,
 							size_t ptr, size_t len);
 
+t_u32					reg_read(t_vm *vm, t_proc *proc, int reg);
 void					reg_write(t_vm *vm, t_proc *proc, int reg, t_u32 value);
 
 /*
