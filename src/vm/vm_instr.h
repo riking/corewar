@@ -6,7 +6,7 @@
 /*   By: kyork <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/10 14:10:57 by kyork             #+#    #+#             */
-/*   Updated: 2018/02/27 09:59:59 by kyork            ###   ########.fr       */
+/*   Updated: 2018/02/27 11:27:53 by kyork            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void				op_or(t_vm *vm, t_proc *proc);
 void				op_xor(t_vm *vm, t_proc *proc);
 void				op_zjmp(t_vm *vm, t_proc *proc);
 void				op_ldi(t_vm *vm, t_proc *proc);
-void				op_stu(t_vm *vm, t_proc *proc);
+void				op_sti(t_vm *vm, t_proc *proc);
 void				op_fork(t_vm *vm, t_proc *proc);
 void				op_lld(t_vm *vm, t_proc *proc);
 void				op_lldi(t_vm *vm, t_proc *proc);

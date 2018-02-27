@@ -6,7 +6,7 @@
 /*   By: kyork <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/27 09:46:29 by kyork             #+#    #+#             */
-/*   Updated: 2018/02/27 11:10:27 by kyork            ###   ########.fr       */
+/*   Updated: 2018/02/27 11:27:22 by kyork            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ void				op_ld(t_vm *vm, t_proc *proc) {
 		addr = mem_index(proc->pc, offset % IDX_MOD);
 		guest_read(vm, (t_u8*)&value, addr, REG_SIZE);
 	}
+	else
+		return;
 	reg_write(vm, proc, (int)proc->decoded_arg[1], value);
 	proc->carry = value != 0;
 }
@@ -43,6 +45,8 @@ void				op_lld(t_vm *vm, t_proc *proc) {
 		addr = mem_index(proc->pc, offset);
 		guest_read(vm, (t_u8*)&value, addr, REG_SIZE);
 	}
+	else
+		return;
 	reg_write(vm, proc, (int)proc->decoded_arg[1], value);
 	proc->carry = value != 0;
 }
@@ -63,5 +67,7 @@ void				op_st(t_vm *vm, t_proc *proc) {
 		addr = mem_index(proc->pc, offset % IDX_MOD);
 		guest_write(vm, (t_u8*)&value, addr, REG_SIZE);
 	}
+	else
+		return;
 	proc->carry = value != 0;
 }

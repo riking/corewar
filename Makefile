@@ -6,7 +6,7 @@
 #    By: kyork <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/01/19 13:14:58 by kyork             #+#    #+#              #
-#    Updated: 2018/02/26 15:43:41 by kyork            ###   ########.fr        #
+#    Updated: 2018/02/27 11:26:54 by kyork            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ COMMONSRC	+= op.c instr.c
 
 ASM_SRC		+= asm/main.c
 
-VM_SRC		+= vm/heap.c vm/cycle.c vm/op_math.c vm/instr.c
+VM_SRC		+= vm/heap.c vm/cycle.c vm/op_math.c vm/op_ldst.c vm/op_ldisti.c vm/op_fork.c vm/instr.c
 
 DISASM_SRC  += disasm/main.c disasm/file_op.c disasm/instruction.c disasm/print.c disasm/stdin.c disasm/util.c
 
