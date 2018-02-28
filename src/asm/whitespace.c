@@ -6,21 +6,11 @@
 /*   By: asarandi <asarandi@student.42.us.org>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/10 23:21:55 by asarandi          #+#    #+#             */
-/*   Updated: 2018/02/11 06:43:28 by asarandi         ###   ########.fr       */
+/*   Updated: 2018/02/11 21:53:15 by asarandi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
-
-int	ft_isspace(int c)
-{
-	if ((c >= 0x09) && (c <= 0x0d))
-		return (1);
-	else if (c == 0x20)
-		return (1);
-	else
-		return (0);
-}
 
 void	whitespace_transform(char *str)
 {

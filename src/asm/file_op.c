@@ -6,13 +6,13 @@
 /*   By: asarandi <asarandi@student.42.us.org>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/28 17:29:57 by asarandi          #+#    #+#             */
-/*   Updated: 2018/02/09 18:01:19 by asarandi         ###   ########.fr       */
+/*   Updated: 2018/02/11 22:03:28 by asarandi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
 
-void	quit(int errnum, void *memory)
+void	gfc_quit(int errnum, void *memory)
 {
 	if (memory != NULL)
 		free(memory);
@@ -45,12 +45,10 @@ void	*getfilecontents(char *filename, size_t *size)
 	int				fd;
 	unsigned char	*mem;
 
-	if (filename == NULL)
-		return (stdin_read_eof(size));
 	if ((int)(*size = getfilesize(filename)) == -1)
-		quit(errno, NULL);
+		gfc_quit(errno, NULL);
 	if ((mem = ft_memalloc(*size + 1)) == NULL)
-		quit(errno, NULL);
+		gfc_quit(errno, NULL);
 	if ((fd = open(filename, O_RDONLY)))
 	{
 		r = read(fd, mem, *size);
@@ -59,7 +57,7 @@ void	*getfilecontents(char *filename, size_t *size)
 			return (mem);
 	}
 	free(mem);
-	quit(errno, NULL);
+	gfc_quit(errno, NULL);
 	return (NULL);
 }
 

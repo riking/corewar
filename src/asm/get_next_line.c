@@ -6,7 +6,7 @@
 /*   By: asarandi <asarandi@student.42.us.org>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/14 12:10:14 by asarandi          #+#    #+#             */
-/*   Updated: 2018/02/10 19:50:55 by asarandi         ###   ########.fr       */
+/*   Updated: 2018/02/11 22:03:43 by asarandi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,13 +29,13 @@ int		gnl_more_mem(char **memory, t_gnl **gnl)
 
 int		gnl_read(int fd, t_gnl **gnl, char **memory)
 {
-	int r;
+	int		r;
 
-	if ((read(fd, *memory, 0)) == -1)
+	if ((read(fd, (*memory), 0)) == -1)
 		return (-1);
-	if ((*memory = ft_memalloc(BUFF_SIZE)) == NULL)
+	if (((*memory) = ft_memalloc(BUFF_SIZE)) == NULL)
 		return (-1);
-	if ((r = read(fd, *memory, BUFF_SIZE)) == 0)
+	if ((r = read(fd, (*memory), BUFF_SIZE)) == 0)
 	{
 		free(*memory);
 		return (0);
@@ -118,6 +118,7 @@ int		get_next_line(const int fd, char **line)
 		return (-1);
 	gnl = &first;
 	*line = NULL;
+	memory = NULL;
 	while ((gnl->fd != fd) && (gnl->next))
 		gnl = gnl->next;
 	if ((gnl->fd == fd) && (gnl->mem))
