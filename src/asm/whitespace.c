@@ -6,7 +6,7 @@
 /*   By: asarandi <asarandi@student.42.us.org>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/10 23:21:55 by asarandi          #+#    #+#             */
-/*   Updated: 2018/02/11 21:53:15 by asarandi         ###   ########.fr       */
+/*   Updated: 2018/03/01 23:41:14 by asarandi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ void	whitespace_transform(char *str)
 			str[i] = ' ';
 		i++;
 	}
+	return ;
 }
 
 void	string_shift_left(char *str)
@@ -53,6 +54,7 @@ void	whitespace_consolidate(char *str)
 		}
 		i++;
 	}
+	return ;
 }
 
 void	whitespace_trim(char *str)
@@ -77,6 +79,7 @@ void	whitespace_trim(char *str)
 		}
 		i++;
 	}
+	return ;
 }
 
 void	process_whitespace(char *str)
@@ -84,4 +87,5 @@ void	process_whitespace(char *str)
 	whitespace_transform(str);
 	whitespace_consolidate(str);
 	whitespace_trim(str);
+	return ;
 }

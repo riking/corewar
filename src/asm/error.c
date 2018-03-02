@@ -6,7 +6,7 @@
 /*   By: asarandi <asarandi@student.42.us.org>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/11 21:06:12 by asarandi          #+#    #+#             */
-/*   Updated: 2018/02/12 02:54:01 by asarandi         ###   ########.fr       */
+/*   Updated: 2018/03/02 02:32:56 by asarandi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	header_error(char *msg, t_asm *a)
 {
-	ft_printf("{red}ERROR:{eoc} %s\n", msg);
+	ft_printf(C_RED "ERROR:" C_END " %s\n", msg);
 	destroy_char_array(a->split, a->lines);
 	if (a->tmp != NULL)
 		free(a->tmp);
@@ -26,7 +26,7 @@ void	header_error(char *msg, t_asm *a)
 
 void	print_error(void)
 {
-	ft_printf("{red}ERROR:{eoc} %s\n", strerror(errno));
+	ft_printf(C_RED "ERROR:" C_END " %s\n", strerror(errno));
 	return ;
 }
 

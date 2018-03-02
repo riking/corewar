@@ -6,7 +6,7 @@
 /*   By: asarandi <asarandi@student.42.us.org>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/28 01:30:13 by asarandi          #+#    #+#             */
-/*   Updated: 2018/02/28 02:14:49 by asarandi         ###   ########.fr       */
+/*   Updated: 2018/03/02 00:05:25 by asarandi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ char	*hexdump_bytes(t_instruction *ptr, int *count)
 	int		i;
 	int		j;
 
-	res = ft_memalloc(20);
+	res = ft_memalloc(MAX_INSTR_BYTES + 1);
 	i = 0;
 	res[i++] = (char)ptr->opcode;
 	if (ptr->has_acb)

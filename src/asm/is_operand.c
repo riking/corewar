@@ -6,42 +6,42 @@
 /*   By: asarandi <asarandi@student.42.us.org>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/11 20:47:01 by asarandi          #+#    #+#             */
-/*   Updated: 2018/02/26 23:15:07 by asarandi         ###   ########.fr       */
+/*   Updated: 2018/03/02 00:33:40 by asarandi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
 
-int		is_direct(char *str)
+bool	is_direct(char *str)
 {
 	if (str[0] != '%')
-		return (0);
+		return (false);
 	if (string_is_integer(&str[1]))
-		return (1);
+		return (true);
 	if ((str[1] == LABEL_CHAR) && (string_is_label(&str[2])))
-		return (1);
-	return (0);
+		return (true);
+	return (false);
 }
 
-int		is_indirect(char *str)
+bool	is_indirect(char *str)
 {
 	if (string_is_integer(str))
-		return (1);
+		return (true);
 	if ((str[0] == LABEL_CHAR) && (string_is_label(&str[1])))
-		return (1);
-	return (0);
+		return (true);
+	return (false);
 }
 
-int		is_register(char *str)
+bool	is_register(char *str)
 {
 	int i;
 
 	if (str[0] != 'r')
-		return (0);
+		return (false);
 	i = ft_atoi(&str[1]);
 	if ((i >= 1) && (i <= REG_NUMBER))
-		return (1);
-	return (0);
+		return (true);
+	return (false);
 }
 
 int		get_operand_type(char *op)
@@ -55,7 +55,7 @@ int		get_operand_type(char *op)
 	return (0);
 }
 
-int		is_operand(char *str)
+bool	is_valid_operand(char *str)
 {
 	char	**split;
 	char	*s;
@@ -71,9 +71,9 @@ int		is_operand(char *str)
 		else
 		{
 			free_split(split);
-			return (0);
+			return (false);
 		}
 	}
 	free_split(split);
-	return (1);
+	return (true);
 }

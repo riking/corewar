@@ -6,7 +6,7 @@
 /*   By: asarandi <asarandi@student.42.us.org>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/11 20:41:20 by asarandi          #+#    #+#             */
-/*   Updated: 2018/02/28 01:35:18 by asarandi         ###   ########.fr       */
+/*   Updated: 2018/03/02 00:41:39 by asarandi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	validate_champion_name(t_asm *a, int *i)
 			warning(".name is blank");
 		if (len > PROG_NAME_LENGTH)
 			return (header_error(".name length exceeds PROG_NAME_LENGTH", a));
-		ft_strncpy(a->header.prog_name, quote1, len);
+		ft_strncpy(a->header.prog_name, quote1, (int)len);
 		a->have_name = 1;
 	}
 	free(str);
@@ -57,7 +57,7 @@ void	validate_champion_comment(t_asm *a, int *i)
 			warning(".comment is blank");
 		if (len > COMMENT_LENGTH)
 			return (header_error(".comment length exceeds COMMENT_LENGTH", a));
-		ft_strncpy(a->header.comment, quote1, len);
+		ft_strncpy(a->header.comment, quote1, (int)len);
 		a->have_comment = 1;
 	}
 	free(str);

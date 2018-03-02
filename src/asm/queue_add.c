@@ -6,7 +6,7 @@
 /*   By: asarandi <asarandi@student.42.us.org>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/11 20:53:20 by asarandi          #+#    #+#             */
-/*   Updated: 2018/02/28 02:03:52 by asarandi         ###   ########.fr       */
+/*   Updated: 2018/03/02 02:23:03 by asarandi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ t_in	*queue_prepare(t_asm *a, char *name, char *oper)
 	ptr->i_oper = ft_strdup(oper);
 	ptr->operands = ft_strsplit(oper, SEPARATOR_CHAR);
 	if (count_char_array(ptr->operands) != instr.arg_count)
-		ft_printf("{red}ERROR:{eoc} wrong number of operands\n");
+		error_bad_operand_count(ptr->original, a);
 	ptr->arg_count = instr.arg_count;
 	ptr->short_direct = instr.short_direct;
 	ptr->size = 1 + instr.arg_descript;
@@ -74,7 +74,7 @@ void	add_to_queue(t_asm *a, t_in *ptr)
 	return ;
 }
 
-void	instruction_size(int type, t_in *ptr, t_op instr)
+void	add_operand_size(int type, t_in *ptr, t_op instr)
 {
 	if (type == T_REG)
 		ptr->size += 1;
@@ -100,10 +100,9 @@ void	add_instruction_to_queue(t_asm *a, char *name, char *oper)
 	{
 		type = get_operand_type(ptr->operands[i]);
 		if ((instr.arg[i] & type) == 0)
-			ft_printf("ERROR: invalid operand type: %s for instruction %s\n",
-					ptr->operands[i], name);
+			error_invalid_operand(ptr->original, ptr->operands[i], name, a);
 		ptr->op_types[i] = type;
-		instruction_size(type, ptr, instr);
+		add_operand_size(type, ptr, instr);
 		ptr->acb = update_acb(ptr->acb, i, type);
 		ptr->op_values[i] = ft_atoi(ptr->operands[i]);
 		i++;

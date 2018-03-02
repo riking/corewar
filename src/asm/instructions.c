@@ -6,22 +6,22 @@
 /*   By: asarandi <asarandi@student.42.us.org>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/11 21:01:24 by asarandi          #+#    #+#             */
-/*   Updated: 2018/02/28 01:29:08 by asarandi         ###   ########.fr       */
+/*   Updated: 2018/03/02 02:57:11 by asarandi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
 
-void	i_fatal(t_asm *a, char **split, char *msg)
+void		i_fatal(t_asm *a, char **split, char *msg)
 {
-	ft_printf("{yellow}LINE %d:{eoc} %s\n", a->lines, a->split[a->lines - 1]);
-	ft_printf("{red}ERROR:{eoc} %s\n", msg);
+	ft_printf(C_YELLOW"LINE %d:"C_END" %s\n", a->lines, a->split[a->lines - 1]);
+	ft_printf(C_RED"ERROR:"C_END" %s\n", msg);
 	free_split(split);
 	clean_up(a);
 	exit(0);
 }
 
-void	process_instruction(t_asm *a)
+void		process_instruction(t_asm *a)
 {
 	char	**split;
 	int		count;
@@ -39,15 +39,27 @@ void	process_instruction(t_asm *a)
 	{
 		if (!is_instruction(split[count - 2]))
 			i_fatal(a, split, "expecting instruction");
-		else if (!is_operand(split[count - 1]))
+		else if (!is_valid_operand(split[count - 1]))
 			i_fatal(a, split, "expecting operands");
 		else
 			add_instruction_to_queue(a, split[count - 2], split[count - 1]);
 	}
 	free_split(split);
+	return ;
 }
 
-void	parse_instructions(t_asm *a)
+static void	string_prepare(char *line, t_asm *a)
+{
+	if (a->tmp != NULL)
+		free(a->tmp);
+	a->tmp = ft_strdup(line);
+	a->tmp = strip_comments(a->tmp);
+	a->tmp = trim_left(a->tmp);
+	a->tmp = trim_right(a->tmp);
+	return ;
+}
+
+void		parse_instructions(t_asm *a)
 {
 	char	*line;
 
@@ -66,15 +78,5 @@ void	parse_instructions(t_asm *a)
 			a->tmp = NULL;
 		}
 	}
-}
-
-void	string_prepare(char *line, t_asm *a)
-{
-	if (a->tmp != NULL)
-		free(a->tmp);
-	a->tmp = ft_strdup(line);
-	a->tmp = strip_comments(a->tmp);
-	a->tmp = trim_left(a->tmp);
-	a->tmp = trim_right(a->tmp);
 	return ;
 }

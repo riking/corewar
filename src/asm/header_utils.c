@@ -6,40 +6,32 @@
 /*   By: asarandi <asarandi@student.42.us.org>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/28 01:33:57 by asarandi          #+#    #+#             */
-/*   Updated: 2018/02/28 02:16:52 by asarandi         ###   ########.fr       */
+/*   Updated: 2018/03/02 01:08:32 by asarandi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
 
-int		is_digit(char c)
-{
-	if ((c >= '0') && (c <= '9'))
-		return (1);
-	else
-		return (0);
-}
-
-int		ft_isspace(int c)
+bool	ft_isspace(int c)
 {
 	if ((c >= 0x09) && (c <= 0x0d))
-		return (1);
+		return (true);
 	else if (c == 0x20)
-		return (1);
+		return (true);
 	else
-		return (0);
+		return (false);
 }
 
-int		is_header_complete(t_asm *a)
+bool	is_header_complete(t_asm *a)
 {
-	if ((a->have_name == 1) && (a->have_comment == 1))
-		return (1);
-	return (0);
+	if ((a->have_name == true) && (a->have_comment == true))
+		return (true);
+	return (false);
 }
 
 void	warning(char *str)
 {
-	ft_printf("{yellow}WARNING:{eoc} %s\n", str);
+	ft_printf(C_YELLOW"WARNING:"C_END" %s\n", str);
 	return ;
 }
 

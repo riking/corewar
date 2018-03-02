@@ -6,7 +6,7 @@
 /*   By: asarandi <asarandi@student.42.us.org>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/03 03:25:40 by asarandi          #+#    #+#             */
-/*   Updated: 2018/02/11 21:53:04 by asarandi         ###   ########.fr       */
+/*   Updated: 2018/03/01 23:40:20 by asarandi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,14 +43,14 @@ short	chartoshort(char *array)
 	return (result);
 }
 
-int		check_magic(t_header *header)
+bool	is_valid_magic(t_header *header)
 {
 	int	magic;
 
 	magic = betole(header->magic);
 	if (magic == COREWAR_EXEC_MAGIC)
-		return (1);
-	return (0);
+		return (true);
+	return (false);
 }
 
 int		get_arg_type(char arg_byte, int arg_number)

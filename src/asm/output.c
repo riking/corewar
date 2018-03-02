@@ -6,7 +6,7 @@
 /*   By: asarandi <asarandi@student.42.us.org>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/11 20:52:17 by asarandi          #+#    #+#             */
-/*   Updated: 2018/02/28 01:31:21 by asarandi         ###   ########.fr       */
+/*   Updated: 2018/03/01 23:34:25 by asarandi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ void	output_write_data(t_asm *a, t_instruction *ptr, int *i, int j)
 		a->body[(*i)++] = (char)(ptr->op_values[j] >> 8);
 		a->body[(*i)++] = (char)ptr->op_values[j];
 	}
+	return ;
 }
 
 void	generate_output(t_asm *a)
@@ -80,4 +81,5 @@ void	generate_output(t_asm *a)
 		}
 		ptr = ptr->next;
 	}
+	return ;
 }
