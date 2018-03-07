@@ -6,7 +6,7 @@
 /*   By: kyork <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/27 16:58:16 by kyork             #+#    #+#             */
-/*   Updated: 2018/02/27 11:25:06 by kyork            ###   ########.fr       */
+/*   Updated: 2018/03/07 14:34:40 by kyork            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,9 @@
 # define MAX_INSTR_BYTES 11
 
 typedef struct			s_player {
-	t_s32	plnum;
+	size_t	last_live;
 	size_t	live_count;
+	t_s32	plnum;
 }						t_player;
 
 /*
