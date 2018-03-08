@@ -45,7 +45,7 @@ t_in	*queue_prepare(t_asm *a, char *name, char *oper)
 	ptr->type = T_REG;
 	ptr->original = a->split[a->lines - 1];
 	ptr->opcode = instr.opcode;
-	ptr->has_acb = instr.arg_descript;
+	ptr->has_acb = instr.needs_acb;
 	ptr->address = a->prog_size;
 	ptr->i_name = ft_strdup(name);
 	ptr->i_oper = ft_strdup(oper);
@@ -54,7 +54,7 @@ t_in	*queue_prepare(t_asm *a, char *name, char *oper)
 		error_bad_operand_count(ptr->original, a);
 	ptr->arg_count = instr.arg_count;
 	ptr->short_direct = instr.short_direct;
-	ptr->size = 1 + instr.arg_descript;
+	ptr->size = 1 + instr.needs_acb;
 	return (ptr);
 }
 

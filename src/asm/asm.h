@@ -15,7 +15,8 @@
 
 # include "libft.h"
 # include "libftprintf.h"
-# include "op.h"
+# include "../op.h"
+# include "../instr.h"
 # include <unistd.h>
 # include <errno.h>
 # include <fcntl.h>
@@ -34,18 +35,6 @@
 # define C_GREEN "\e[0;32m"
 # define C_YELLOW "\e[0;33m"
 # define C_END "\e[0m"
-
-typedef struct	s_op
-{
-	char		*instruction;
-	int			arg_count;
-	t_arg_type	arg[MAX_ARGS_NUMBER];
-	char		opcode;
-	int			cycles;
-	char		*description;
-	int			arg_descript;
-	int			short_direct;
-}				t_op;
 
 typedef	struct	s_in
 {
