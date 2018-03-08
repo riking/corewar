@@ -6,7 +6,7 @@
 /*   By: kyork <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/07 15:05:34 by kyork             #+#    #+#             */
-/*   Updated: 2018/03/07 16:31:23 by kyork            ###   ########.fr       */
+/*   Updated: 2018/03/08 13:15:44 by kyork            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,3 +22,25 @@ void	op_zjmp(t_vm *vm, t_proc *proc)
 	if (proc->carry)
 		proc->pc = new_pc;
 }
+
+#ifdef AFF_REAL_WRITE
+
+void	op_aff(t_vm *vm, t_proc *proc)
+{
+	int		reg;
+	char	ch;
+
+	reg = (int)(unsigned int)proc->decoded_arg[0];
+	ch = (char)reg_read(vm, proc, reg);
+	write(2, &ch, 1);
+}
+
+#else
+
+void	op_aff(t_vm *vm, t_proc *proc)
+{
+	(void)vm;
+	(void)proc;
+}
+
+#endif
