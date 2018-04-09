@@ -1,28 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   file_op.c                                          :+:      :+:    :+:   */
+/*   count.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: asarandi <asarandi@student.42.us.org>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/01/28 17:29:57 by asarandi          #+#    #+#             */
-/*   Updated: 2018/03/01 23:12:55 by asarandi         ###   ########.fr       */
+/*   Created: 2018/02/11 21:07:02 by asarandi          #+#    #+#             */
+/*   Updated: 2018/02/11 22:03:20 by asarandi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
 
-int		put_file_contents(char *filename, unsigned char *data, size_t size)
+int			count_matching_chars(char *str, char c)
 {
-	int		fd;
+	int i;
+	int count;
 
-	if ((fd = open(filename, O_CREAT | O_WRONLY | O_TRUNC, 0644)) == -1)
-		return (0);
-	if ((write(fd, data, size)) == -1)
+	count = 0;
+	i = 0;
+	while (str[i])
 	{
-		close(fd);
-		return (0);
+		if (str[i] == c)
+			count++;
+		i++;
 	}
-	close(fd);
-	return (1);
+	return (count);
+}
+
+int			count_operands(char *str)
+{
+	int		count;
+	char	**split;
+
+	if (str == NULL)
+		return (0);
+	split = ft_strsplit(str, SEPARATOR_CHAR);
+	count = count_char_array(split);
+	destroy_char_array(split, count);
+	return (count);
 }
