@@ -6,7 +6,7 @@
 /*   By: kyork <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/27 16:58:16 by kyork             #+#    #+#             */
-/*   Updated: 2018/03/07 14:34:40 by kyork            ###   ########.fr       */
+/*   Updated: 2018/04/09 16:27:36 by kyork            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ typedef struct			s_vm {
 	size_t	cur_cycle;
 	size_t	next_die_cycle;
 	size_t	die_cycle_period;
-	size_t	no_death_checks;
+	size_t	no_decrease_checks;
 
 	size_t	pid_next;
 
