@@ -24,6 +24,8 @@
 # define MAX_INSTR_BYTES 11
 
 typedef struct			s_player {
+	size_t	last_live;
+	size_t	live_count;
 	t_s32	plnum;
 }						t_player;
 
@@ -63,7 +65,9 @@ typedef struct			s_vm {
 	size_t	die_cycle_period;
 	size_t	no_decrease_checks;
 
-	size_t	pid;
+	size_t	pid_next;
+
+	t_array	players;
 
 	t_u8	redzone_1[16];
 	t_u8	memory[MEM_SIZE];
@@ -79,7 +83,7 @@ void					vm_set_delay(t_vm *vm, t_proc *proc, int cycles);
 ** Create a new proc from the given parent and schedule it.
 */
 void					vm_fork_proc(t_vm *vm, t_proc *parent,
-							int cycles, int pc_offset);
+							int cycles, size_t new_pc);
 /*
 ** Heap percolate functions
 */
@@ -109,11 +113,14 @@ bool					vm_check_redzone(t_vm *vm);
 ** space.
 */
 size_t					mem_fix(ssize_t ptr);
-size_t					mem_index(size_t base, ssize_t offset);
+size_t					mem_index(size_t base, t_s32 offset);
 
-void					guest_read(t_u8 *buf, size_t ptr, size_t len);
-void					guest_write(t_u8 *buf, size_t ptr, size_t len);
+void					guest_read(t_vm *vm, t_u8 *buf,
+							size_t ptr, size_t len);
+void					guest_write(t_vm *vm, t_u8 *buf,
+							size_t ptr, size_t len);
 
+t_u32					reg_read(t_vm *vm, t_proc *proc, int reg);
 void					reg_write(t_vm *vm, t_proc *proc, int reg, t_u32 value);
 
 /*
