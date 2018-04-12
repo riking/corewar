@@ -6,7 +6,7 @@
 /*   By: kyork <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/27 16:58:16 by kyork             #+#    #+#             */
-/*   Updated: 2018/04/09 16:27:36 by kyork            ###   ########.fr       */
+/*   Updated: 2018/02/21 22:46:32 by jkrause          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,29 @@
 
 # include "../commontypes.h"
 # include "../instr.h"
+# include "../op.h"
 # include <libft.h>
 
 # include <stdint.h>
 # include <stdbool.h>
 # include <stdlib.h>
 
+# include <unistd.h>
+# include <fcntl.h>
+
 # define MAX_INSTR_BYTES 11
+
+# define MAX_CHAMPION_FILE_SIZE (CHAMP_MAX_SIZE+sizeof(t_header))
+
+typedef struct			s_champion
+{
+	struct				s_champion_file
+	{
+		t_header		header;
+		char			instructions[CHAMP_MAX_SIZE];
+	}					*file;
+	t_u64				file_size;
+}						t_champion;
 
 typedef struct			s_player {
 	size_t	last_live;
@@ -127,5 +143,14 @@ void					reg_write(t_vm *vm, t_proc *proc, int reg, t_u32 value);
 ** Returns the number of bytes the instruction occupies
 */
 size_t					decode_args(t_vm *vm, t_proc *proc);
+
+/*
+** Various champion loading/reading functions.
+*/
+
+t_champion				*read_champion(char *filename);
+int						load_champs(void);
+
+void					print_champion(t_champion *champion);
 
 #endif

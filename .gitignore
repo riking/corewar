@@ -1,5 +1,9 @@
+# macOS Finder files
 ._*
 .DS_Store
 
-/build/
+# Vim undo directory
+.undodir
 
+# Build path
+/build/

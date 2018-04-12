@@ -6,17 +6,19 @@
 #    By: kyork <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/01/19 13:14:58 by kyork             #+#    #+#              #
-#    Updated: 2018/03/02 02:54:27 by asarandi         ###   ########.fr        #
+#*   Updated: 2018/04/11 19:16:07 by jkrause          ###   ########.fr       *#
+#    Updated: 2018/02/21 21:44:22 by jkrause          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME 		= corewar
 
-COMMONSRC	+= op.c instr.c
+COMMONSRC	+= op.c instr.c string.c
 
 ASM_SRC		+= $(addprefix asm/, char_array.c count.c error.c file_op.c instruction_utils.c instructions.c is_operand.c label_utils.c main.c output.c queue_add.c resolve_labels.c string.c trim.c util.c validate_header.c whitespace.c header_utils.c hexdump.c operand_error.c)
 
-VM_SRC		+= vm/heap.c vm/cycle.c vm/op_math.c vm/op_ldst.c vm/op_ldisti.c vm/op_fork.c vm/instr.c
+#VM_SRC		+= vm/heap.c vm/cycle.c vm/op_math.c vm/op_ldst.c vm/op_ldisti.c vm/op_fork.c vm/instr.c
+VM_SRC		+= vm/champions.c vm/main.c
 
 DISASM_SRC  += disasm/main.c disasm/file_op.c disasm/instruction.c disasm/print.c disasm/stdin.c disasm/util.c
 
