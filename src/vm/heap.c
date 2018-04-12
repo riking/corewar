@@ -6,7 +6,7 @@
 /*   By: kyork <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/10 10:48:57 by kyork             #+#    #+#             */
-/*   Updated: 2018/02/10 14:09:23 by kyork            ###   ########.fr       */
+/*   Updated: 2018/04/11 18:11:20 by jkrause          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,10 @@ static bool	proc_sooner(t_vm *vm, size_t idx1, size_t idx2)
 	p1 = (t_proc*)ft_ary_get(&vm->procs, idx1);
 	p2 = (t_proc*)ft_ary_get(&vm->procs, idx2);
 	if (p1->wakeup_at < p2->wakeup_at)
-		return true;
+		return (true);
 	if (p1->wakeup_at > p2->wakeup_at)
-		return false;
-	return p1->proc_id < p2->proc_id;
+		return (false);
+	return (p1->proc_id < p2->proc_id);
 }
 
 bool		vm_fix_down(t_vm *vm, size_t idx0)
@@ -44,16 +44,16 @@ bool		vm_fix_down(t_vm *vm, size_t idx0)
 	{
 		ch1 = HEAP_LCHILD(idx);
 		if (ch1 >= vm->procs.item_count || ch1 > OVERFLOW)
-			break;
+			break ;
 		ch2 = HEAP_RCHILD(idx);
 		if ((ch2 < vm->procs.item_count) && proc_sooner(vm, ch2, ch1))
 			ch1 = ch2;
 		if (!proc_sooner(vm, ch1, idx))
-			break;
+			break ;
 		ft_ary_swap(&vm->procs, ch1, idx);
 		idx = ch1;
 	}
-	return idx > idx0;
+	return (idx > idx0);
 }
 
 void		vm_fix_up(t_vm *vm, size_t idx)
@@ -63,10 +63,10 @@ void		vm_fix_up(t_vm *vm, size_t idx)
 	while (1)
 	{
 		if (idx == 0)
-			break;
+			break ;
 		parent = HEAP_PARENT(idx);
 		if (!proc_sooner(vm, idx, parent))
-			break;
+			break ;
 		ft_ary_swap(&vm->procs, parent, idx);
 		idx = parent;
 	}
@@ -86,8 +86,8 @@ void		vm_set_delay(t_vm *vm, t_proc *proc, int cycles)
 		abort();
 	}
 	proc->wakeup_at = vm->cur_cycle + cycles;
-	if (!vm_fix_down(vm, idx)) {
+	if (!vm_fix_down(vm, idx))
+	{
 		vm_fix_up(vm, idx);
 	}
 }
-

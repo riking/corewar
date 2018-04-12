@@ -6,7 +6,7 @@
 /*   By: kyork <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/27 16:58:16 by kyork             #+#    #+#             */
-/*   Updated: 2018/02/21 22:46:32 by jkrause          ###   ########.fr       */
+/*   Updated: 2018/04/11 19:17:32 by jkrause          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -137,7 +137,8 @@ void					guest_write(t_vm *vm, t_u8 *buf,
 							size_t ptr, size_t len);
 
 t_u32					reg_read(t_vm *vm, t_proc *proc, int reg);
-void					reg_write(t_vm *vm, t_proc *proc, int reg, t_u32 value);
+void					reg_write(t_vm *vm, t_proc *proc, int reg,
+							t_u32 value);
 
 /*
 ** Returns the number of bytes the instruction occupies
@@ -150,7 +151,7 @@ size_t					decode_args(t_vm *vm, t_proc *proc);
 
 t_champion				*read_champion(char *filename);
 int						load_champs(void);
-
-void					print_champion(t_champion *champion);
+void					print_area(t_vm *vm);
+int						print_champion(t_champion *champion);
 
 #endif

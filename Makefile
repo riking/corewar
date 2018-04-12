@@ -17,8 +17,7 @@ COMMONSRC	+= op.c instr.c string.c
 
 ASM_SRC		+= $(addprefix asm/, char_array.c count.c error.c file_op.c instruction_utils.c instructions.c is_operand.c label_utils.c main.c output.c queue_add.c resolve_labels.c string.c trim.c util.c validate_header.c whitespace.c header_utils.c hexdump.c operand_error.c)
 
-#VM_SRC		+= vm/heap.c vm/cycle.c vm/op_math.c vm/op_ldst.c vm/op_ldisti.c vm/op_fork.c vm/instr.c
-VM_SRC		+= vm/champions.c vm/main.c
+VM_SRC		+= $(addprefix vm/, instr.c op_fork.c op_ldisti.c main.c op_math.c op_jmp.c op_ldst.c memory.c cycle.c champions.c heap.c fork.c)
 
 DISASM_SRC  += disasm/main.c disasm/file_op.c disasm/instruction.c disasm/print.c disasm/stdin.c disasm/util.c
 
@@ -31,6 +30,10 @@ LIBS		= libft/libft.a
 CFLAGS		+= -Wall -Wextra -Wmissing-prototypes
 CFLAGS		+= -I includes/
 LDFLAGS		+= -Wall -Wextra
+
+ifndef ALL_ERRORS
+	CFLAGS += -ferror-limit=1000000
+endif
 
 ifndef NO_WERROR
 	CFLAGS += -Werror

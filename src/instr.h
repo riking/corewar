@@ -42,6 +42,12 @@ typedef struct		s_decoded {
 	t_u32		arg[4];
 }					t_decoded;
 
+typedef struct		s_insndec {
+	t_op		*opd;
+	t_u8		argn;
+	t_u8		by_offset;
+}					t_insndec;
+
 /*
 ** Returns REG_CODE, DIR_CODE, or IND_CODE (or 0 if no ACB entry).
 */
